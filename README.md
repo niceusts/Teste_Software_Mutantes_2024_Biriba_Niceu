@@ -1,29 +1,149 @@
-cards
-=====
+# Aluno: Niceu Santos Biriba  
+**Turma de Testes de Software, Universidade Federal de Sergipe**
 
-Project task tracking / todo list
+## Atividade 2 - Guia de Testes de Mutação para Projetos Python
 
-A Teaching Project
-----------------------------
+Este documento descreve o processo de configuração e execução de testes de mutação em um projeto Python, utilizando o WSL (Windows Subsystem for Linux), Ubuntu, e ferramentas como `pytest`, `pytest-cov`, e `mutmut`.
 
-This project is used for teaching the concepts of software testing.
-Specifically, testing with the pytest test framework.
+## Documentos e Artefatos
 
-The project appears in:
-- [The Complete pytest Course](https://pythontest.com/courses/)
-  - uses cards version 2.0.0
-- [Python Testing with pytest, 2nd edition](https://pythontest.com/pytest-book/)
-  - uses cards version 1.0.1 - approximately
+- [Documento tutorial em PDF](https://github.com/niceusts/Teste_Software_Mutantes_2024_Biriba_Niceu/blob/main/Artefatos/Niceu_Biriba_atividade_2.pdf)
 
-Can be used as a simple todo list
+
+## Instalação e Configuração
+
+### 1. Instalação do WSL e Atualização da Imagem do Ubuntu
+
+1. **Caso esteja no windows é necessário instalar o WSL (Windows Subsystem for Linux)**:
+    ```bash
+    wsl --install
+    ```
+
+2. **Atualizar a imagem do Ubuntu**:
+    ```bash
+    sudo apt update
+    sudo apt install build-essential
+    ```
+
+### 2. Configuração do Ambiente Virtual
+
+1. **Instalar o `venv` no projeto**:
+    ```bash
+    python3 -m venv venv
+    ```
+2. **Instalar o make para rodar o arquivo Makefile que contem as configurações do projeto**:
+    Utilize o comando:
+    ```bash
+    make install
+    ```
+3. **Instalar os dependencias no projeto**:
+    ```bash
+    make dev
+    ```
+4. **Criar e Ativar o Ambiente Virtual**:
+    No diretório do repositório, execute:
+    ```bash
+    source venv/bin/activate
+    ```
+
+### 3. Uso do Makefile
+1. **Comandos Adicionais**:
+    - **Limpar o Projeto**:
+        ```bash
+        make clean
+        ```
+    - **Executar Testes**:
+        ```bash
+        make test
+        ```
+    - **Criar Distribuição do Projeto**:
+        ```bash
+        make dist
+        ```
+    **Nota**: Caso ocorra algum erro, verifique a compatibilidade da rota de instalação do `pip` no arquivo `venv`. O trecho abaixo pode ser adicionado ao seu `Makefile`:
+    ```makefile
+    dev: ## create dev env
+        python3 -m venv venv --prompt cards_proj
+        venv/bin/pip install -U pip
+        venv/bin/pip install pytest tox pytest-cov coverage mutmut
+        venv/bin/pip install -e .
+    ```
+
+### 4. Execução de Testes
+
+1. **Executar Testes Disponíveis**:
+    Para testar arquivos específicos, execute:
+    ```bash
+    pytest -vv tests/api/nome_arquivo.py
+    pytest -vv tests/cli/nome_arquivo.py
+    ```
+
+    Para rodar todos os testes:
+    ```bash
+    pytest -vv
+    ```
+
+    Salvar/Exibir resultados dos testes em uma página .html
+    ```bash
+    pytest -vv --cov=cards --cov-branch --cov-report html
+    ```
+
+### 5. Testes de Mutação com `mutmut`
+
+1. **Executar Testes de Mutação**:
+    ```bash
+    mutmut run
+    ```
+
+2. **Ver Resultados do `mutmut`**:
+    ```bash
+    mutmut results
+    ```
+
+3. **Mostrar um Teste Específico**:
+    ```bash
+    mutmut show <id>
+    ```
+
+4. **Salvar Resultados em um Arquivo de Texto**:
+    ```bash
+    mutmut results > resultados_mutmut.txt
+    ```
+
+## Recursos Adicionais
+
+- [Documentação do Python](https://www.python.org/)
+- [pytest](https://docs.pytest.org/en/stable/)
+- [pytest-cov](https://pypi.org/project/pytest-cov/)
+- [mutmut](https://github.com/boxed/mutmut)
+
+---
+
+## Melhorias Realizadas
+
+### Casos de Teste Adicionados
+- **Arquivo `src/cards/api.py`**: Adicionados testes para cobrir as linhas 2, 4, 6, 9, 14. Esses testes verificam a inicialização e a manipulação dos atributos da classe `Card`.
+- **Arquivo `src/cards/cli.py`**: Adicionados testes para cobrir as linhas 41-42, 64-67, 73, 86, 89-91, 95-96. Estes testes verificam a lógica condicional e a manipulação de dados.
+
+### Mudanças na Cobertura de Testes
+- **Verificação de Tipos Inválidos**: Foram adicionados testes para verificar se o código lida corretamente com anotações de tipo inválidas.
+
+### Comparação de Resultados
+- **Resultados Anteriores**:
+  
+![image](https://github.com/user-attachments/assets/bf2da7f6-50cb-444c-88ec-3e45a716c12d)
+
+- **Resultados Atuais**: 
+
+### Conclusão
+A adição de novos casos de teste e a revisão dos testes existentes resultaram em uma melhor detecção de mutantes, melhorando a robustez e a confiabilidade do código.
+
+----
+
+Como usar o software de Cards
 ---------------------------------
 
-Even though the primary goal of the project is for teaching about software testing, I also use it as a simple command line task tracker for myself and my team.
-
-Usage
------
-
-Here's a demo of how it works:
+Aqui está uma demonstração de como funciona:
 
     $ cards add a todo
     $ cards add -o Brian another task

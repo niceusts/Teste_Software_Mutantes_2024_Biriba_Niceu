@@ -39,9 +39,9 @@ install: ## install in editable mode
 	pip install -e .
 
 dev: ## create dev env
-	py -m venv venv --prompt cards_proj
+	python3 -m venv venv --prompt cards_proj
 	venv/bin/pip install -U pip
-	venv/bin/pip install pytest tox pytest-cov coverage
+	venv/bin/pip install pytest tox pytest-cov coverage mutmut
 	venv/bin/pip install -e .
 	@echo "-------------------------"
 	@echo "dev env ready to activate"

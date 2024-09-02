@@ -1,12 +1,9 @@
-"""
-DB for the cards project
-"""
 import tinydb
-
+from pathlib import Path
 
 class DB:
-    def __init__(self, db_path, db_file_prefix):
-        self._db = tinydb.TinyDB(db_path / f"{db_file_prefix}.json", create_dirs=True)
+    def __init__(self, db_path: Path, db_file_prefix: str):
+        self._db = tinydb.TinyDB(db_path / f"{db_file_prefix}.json", create_dirs=False)
 
     def create(self, item: dict) -> int:
         card_id = self._db.insert(item)
@@ -19,7 +16,7 @@ class DB:
     def read_all(self):
         return self._db
 
-    def update(self, card_id: int, mods) -> None:
+    def update(self, card_id: int, mods: dict) -> None:
         changes = {k: v for k, v in mods.items() if v is not None}
         self._db.update(changes, doc_ids=[card_id])
 

@@ -130,10 +130,15 @@ Este documento descreve o processo de configuração e execução de testes de m
 
 ### Comparação de Resultados
 - **Resultados Anteriores**:
-  
-![image](https://github.com/user-attachments/assets/bf2da7f6-50cb-444c-88ec-3e45a716c12d)
+-   ![image](https://github.com/user-attachments/assets/ffb807fb-6832-4858-b2d0-7e3b2758ae23)
 
-- **Resultados Atuais**: 
+
+
+- **Resultados Atuais**:
+- ![Imagem do WhatsApp de 2024-09-01 à(s) 23 33 57_0898a31e](https://github.com/user-attachments/assets/426df612-3550-42fb-831f-abd55a7309e3)
+- ![Imagem do WhatsApp de 2024-09-01 à(s) 23 03 33_95fffc58](https://github.com/user-attachments/assets/c11eba32-944d-45f5-b1e9-55cf7fef4691)
+
+
 
 ### Conclusão
 A adição de novos casos de teste e a revisão dos testes existentes resultaram em uma melhor detecção de mutantes, melhorando a robustez e a confiabilidade do código.

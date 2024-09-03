@@ -3,7 +3,11 @@
 
 ## Atividade 2 - Guia de Testes de Mutação para Projetos Python
 
-Este documento descreve o processo de configuração e execução de testes de mutação em um projeto Python, utilizando o WSL (Windows Subsystem for Linux), Ubuntu, e ferramentas como `pytest`, `pytest-cov`, e `mutmut`.
+## Resumo da Atividade de Testes de Mutação
+
+Os Testes de Mutação são uma forma de avaliar a qualidade dos casos de teste para um determinado projeto de software. Através das chamadas “mutações”, podem-se inserir propositalmente defeitos no código e avaliar até que ponto os casos de teste utilizados em um projeto são efetivos.
+
+Nesta atividade, escolhi um projeto que faz o CRUD de cards, e esses cards têm estados como "feito", "em progresso" ou "terminado". O objetivo é aplicar os conceitos de testes de mutação nesse projeto, utilizando ferramentas como `pytest` para testes de unidade, `pytest-cov` para cobertura de testes e `mutmut` para realizar os testes de mutação.
 
 ## Documentos e Artefatos
 
